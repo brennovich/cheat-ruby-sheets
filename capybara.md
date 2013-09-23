@@ -287,7 +287,7 @@ They you can use configuring the default_driver:
 ```ruby
 
     Capybara.configure do |config|
-      config.default_driver = :browser_safari
+      config.default_driver = :selenium_safari
     end
 ```
 
