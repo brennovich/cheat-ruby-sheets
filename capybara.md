@@ -195,6 +195,74 @@ expect(page).to have_link("Foo", :href=>"googl.com")
 expect(page).to have_no_link("Foo", :href=>"google.com")
 ```
 
+# Capybara setup
+
+```ruby
+
+    Capybara.configure do |config|
+      # The default host to use when giving a relative URL to visit
+      #
+      config.app_host   = 'http://www.google.com'
+
+      # Where dynamic assets are hosted - will be prepended to relative asset locations if present (Default: nil)
+      #
+      config.asset_host = nil
+
+      # Whether the Rack server's port should automatically be inserted into every visited URL
+      #
+      config.always_include_port    = false
+
+      # Whether to start a Rack server for the given Rack app (Default: true)
+      #
+      config.run_server = true
+
+      # Methods which take a selector use the given type by default. (Can be :css or :xpath, DEFAULT CSS).
+      config.default_selector       = :css
+
+      # The number of seconds to wait for asynchronous processes to finish (Default: 2)
+      #
+      config.default_wait_time      = 2
+
+      # Whether to ignore hidden elements on the page (Default: false)
+      #
+      config.ignore_hidden_elements = false
+
+      config.default_host           = "http://www.example.com"
+
+      # Whether to automatically reload elements as Capybara is waiting (Default: true)
+      #
+      config.automatic_reload       = true
+
+      # Can be :first, :smart, :prefer_exact or :one.
+      config.match                  = :smart
+
+      # Can specify whether to match substrings or entire text. (Default: false)
+      config.exact                  = false
+
+      # Ignores server errors if false.
+      #
+      config.raise_server_errors  = false
+
+      # Will ignores invisible text
+      #
+      # But you can search invisible texts with :all option: 'page.find(:id, "hidden-text").text(:all)'
+      #
+      Capybara.visible_text_only = true
+
+      # Where to put pages saved through save_and_open_page (Default: Dir.pwd)
+      #
+      config.save_and_open_page_path = Dir.pwd
+
+      # The name of the driver to use by default. (Default: :rack_test)
+      #
+      config.default_driver = :rack_test
+
+      # The name of a driver to use for JavaScript enabled tests. (Default: :selenium)
+      #
+      config.javascript_driver = :selenium
+    end
+```
+
 ## Collaborators
 
 1. @tomas-stefano
