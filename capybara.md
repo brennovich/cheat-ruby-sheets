@@ -188,3 +188,8 @@ expect(page).to have_link("Foo")
 expect(page).to have_link("Foo", :href=>"googl.com")
 expect(page).to have_no_link("Foo", :href=>"google.com")
 ```
+
+## Collaborators
+
+1. @tomas-stefano
+2. @brennovich
