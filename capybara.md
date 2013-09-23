@@ -25,6 +25,11 @@ select 'Option', from: 'Label'
 
 # File input
 attach_file Rails.root.join('spec/fixture/some_file.png')
+
+# Drag and drop
+draggable_element = find('.drag-me')
+droppable_element = find('.drop-here')
+draggable_element.drag_to(droppable_element)
 ```
 
 ## Capybara Finders
@@ -104,6 +109,7 @@ save_and_open_page
 visit("http://google.com")
 
 page.current_url
+page.title
 
 # Execute the given script, not returning a result. This is useful for scripts that return
 # complex objects, such as jQuery statements. +execute_script+ should be used over
@@ -193,3 +199,4 @@ expect(page).to have_no_link("Foo", :href=>"google.com")
 
 1. @tomas-stefano
 2. @brennovich
+3. @carloslopes
