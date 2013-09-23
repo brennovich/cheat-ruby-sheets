@@ -195,14 +195,14 @@ expect(page).to have_link("Foo", :href=>"googl.com")
 expect(page).to have_no_link("Foo", :href=>"google.com")
 ```
 
-# Capybara setup
+## Capybara setup
 
 ```ruby
 
     Capybara.configure do |config|
       # The default host to use when giving a relative URL to visit
       #
-      config.app_host   = 'http://www.google.com'
+      config.app_host = 'http://www.google.com'
 
       # Where dynamic assets are hosted - will be prepended to relative asset locations if present (Default: nil)
       #
@@ -210,38 +210,38 @@ expect(page).to have_no_link("Foo", :href=>"google.com")
 
       # Whether the Rack server's port should automatically be inserted into every visited URL
       #
-      config.always_include_port    = false
+      config.always_include_port = false
 
       # Whether to start a Rack server for the given Rack app (Default: true)
       #
       config.run_server = true
 
       # Methods which take a selector use the given type by default. (Can be :css or :xpath, DEFAULT CSS).
-      config.default_selector       = :css
+      config.default_selector = :css
 
       # The number of seconds to wait for asynchronous processes to finish (Default: 2)
       #
-      config.default_wait_time      = 2
+      config.default_wait_time = 2
 
       # Whether to ignore hidden elements on the page (Default: false)
       #
       config.ignore_hidden_elements = false
 
-      config.default_host           = "http://www.example.com"
+      config.default_host = "http://www.example.com"
 
       # Whether to automatically reload elements as Capybara is waiting (Default: true)
       #
-      config.automatic_reload       = true
+      config.automatic_reload = true
 
       # Can be :first, :smart, :prefer_exact or :one.
-      config.match                  = :smart
+      config.match = :smart
 
       # Can specify whether to match substrings or entire text. (Default: false)
-      config.exact                  = false
+      config.exact = false
 
       # Ignores server errors if false.
       #
-      config.raise_server_errors  = false
+      config.raise_server_errors = false
 
       # Will ignores invisible text
       #
@@ -260,6 +260,34 @@ expect(page).to have_no_link("Foo", :href=>"google.com")
       # The name of a driver to use for JavaScript enabled tests. (Default: :selenium)
       #
       config.javascript_driver = :selenium
+    end
+```
+
+## Register drivers
+
+You can register drivers to test against other browsers:
+
+```ruby
+
+    Capybara.register_driver :selenium_chrome do |app|
+      Capybara::Selenium::Driver.new(app, :browser => :chrome)
+    end
+
+    Capybara.register_driver :selenium_firefox do |app|
+      Capybara::Selenium::Driver.new(app, :browser => :firefox)
+    end
+
+    Capybara.register_driver :selenium_safari do |app|
+      Capybara::Selenium::Driver.new(app, :browser => :safari)
+    end
+```
+
+They you can use configuring the default_driver:
+
+```ruby
+
+    Capybara.configure do |config|
+      config.default_driver = :safari
     end
 ```
 
