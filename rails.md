@@ -3,21 +3,21 @@ rails_root
 |-- app  
 |   |-- assets  
 |   |-- controllers  
-|   |   `-- application.rb  
+|   |   |-- application.rb  
 |   |-- helpers  
-|   |   `-- application_helper.rb  
+|   |   |-- application_helper.rb  
 |   |-- models  
 |   `-- views  
-|       `-- layouts  
+|       |-- layouts  
 |-- components  
 |-- config  
 |   |-- enviroments  
 |   |   |-- development.rb  
 |   |   |-- production.rb  
-|   |   `-- test.rb  
+|   |   |-- test.rb  
 |   |-- database.yml  
 |   |-- enviroment.rb  
-|   `-- routes.rb  
+|   |-- routes.rb  
 |-- db  
 |-- doc  
 |-- lib  
@@ -25,7 +25,7 @@ rails_root
 |   |-- development.log  
 |   |-- production.log  
 |   |-- server.log  
-|   `-- test.log  
+|   |-- test.log  
 |-- public  
 |-- script  
 |-- test  
@@ -33,8 +33,8 @@ rails_root
 |   |-- functional  
 |   |-- mocks  
 |   |-- unit  
-|   `-- test_helper.rb  
-`-- vendor  
+|   |-- test_helper.rb  
+|-- vendor  
 
 # Methods
 ### Strings
