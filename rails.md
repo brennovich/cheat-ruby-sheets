@@ -1,11 +1,11 @@
 # Default Directory Structure
-rails_root
-|-- app
-|   |-- assets
-|   |-- controllers
-|   |   `-- application.rb
-|   |-- helpers
-|   |   `-- application_helper.rb
+rails_root  
+|-- app  
+|   |-- assets  
+|   |-- controllers  
+|   |   `-- application.rb  
+|   |-- helpers  
+|   |   `-- application_helper.rb  
 |   |-- models
 |   `-- views
 |       `-- layouts
