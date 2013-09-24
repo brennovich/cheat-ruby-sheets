@@ -253,20 +253,17 @@ else
 
 # Regular Expression Syntax
 
-^ Start of string  
-$ End of string  
-. Any single character  
-(a|b) a or b  
-(...) Group section  
-[abc] Item in range (a or b or c)  
-[^abc] Not in range (not a or b or c)  
-a? Zero or one of a  
-a* Zero or more of a  
-a+ One or more of a  
-a{3}   
-test  
-Exactly 3 of a  
-a{3,} 3 or more of a  
-a{3,6}  
-Between 3 and 6 of a  
-!(pattern) "Not" prefix. Apply rule when URL does not match pattern.  
+`^` Start of string  
+`$` End of string  
+`.` Any single character  
+`(a|b)` a or b  
+`(...)` Group section  
+`[abc]` Item in range (a or b or c)  
+`[^abc]` Not in range (not a or b or c)  
+`a?` Zero or one of a  
+`a*` Zero or more of a  
+`a+` One or more of a  
+`a{3}` Exactly 3 of a  
+`a{3,}` 3 or more of a  
+`a{3,6}` Between 3 and 6 of a  
+`!(pattern)` "Not" prefix. Apply rule when URL does not match pattern.  
