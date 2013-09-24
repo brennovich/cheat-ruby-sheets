@@ -1,7 +1,7 @@
 # Default Directory Structure
 rails_root  
 |-- app  
-:|   |-- assets  
+: |   |-- assets  
 :|   |-- controllers  
 :|   |   |-- application.rb  
 :|   |-- helpers  
