@@ -1,7 +1,8 @@
 # Default Directory Structure
+`
 rails_root  
 |-- app  
-|:   |-- assets  
+|   |-- assets  
 |   |-- controllers  
 |   |   |-- application.rb  
 |   |-- helpers  
@@ -35,7 +36,7 @@ rails_root
 |   |-- unit  
 |   |-- test_helper.rb  
 |-- vendor  
-
+`
 # Methods
 ### Strings
 capitalize!  
