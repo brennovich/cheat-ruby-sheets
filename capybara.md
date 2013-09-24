@@ -223,9 +223,9 @@ expect(page).to have_no_link("Foo", :href=>"google.com")
       #
       config.default_wait_time = 2
 
-      # Whether to ignore hidden elements on the page (Default: false)
+      # Whether to ignore hidden elements on the page (Default: true)
       #
-      config.ignore_hidden_elements = false
+      config.ignore_hidden_elements = true
 
       config.default_host = "http://www.example.com"
 
