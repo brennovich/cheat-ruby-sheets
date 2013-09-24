@@ -37,7 +37,7 @@ rails_root
 `-- vendor
 
 # Methods
-## Strings
+### Strings
 capitalize!
 center
 chomp!
@@ -78,7 +78,7 @@ unpack
 upcase!
 upto
 
-## Regex
+### Regex
 escape
 last_match
 new
@@ -112,7 +112,7 @@ yday
 year
 zone
 
-## Arrays
+### Arrays
 assoc
 at
 clear
@@ -151,7 +151,7 @@ sort!
 uniq!
 unshift
 
-## Validation
+### Validation
 condition_block?
 create!
 evaluate_condition
@@ -171,7 +171,7 @@ validates_presence_of
 validates_size_of
 validates_uniqueness_of
 
-## Enumerable Mixin
+### Enumerable Mixin
 collect
 each_with_index
 entries
