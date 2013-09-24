@@ -1,14 +1,14 @@
 # Default Directory Structure
 rails_root  
 |-- app  
-: |   |-- assets  
-:|   |-- controllers  
-:|   |   |-- application.rb  
-:|   |-- helpers  
-:|   |   |-- application_helper.rb  
-:|   |-- models  
-:|   |-- views  
-:|       |-- layouts  
+|:   |-- assets  
+|   |-- controllers  
+|   |   |-- application.rb  
+|   |-- helpers  
+|   |   |-- application_helper.rb  
+|   |-- models  
+|   |-- views  
+|       |-- layouts  
 |-- components  
 |-- config  
 |   |-- enviroments  
