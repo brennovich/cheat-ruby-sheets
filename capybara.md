@@ -114,13 +114,11 @@ page.title
 # Execute the given script, not returning a result. This is useful for scripts that return
 # complex objects, such as jQuery statements. +execute_script+ should be used over
 # +evaluate_script+ whenever possible.
-#
 page.execute_script("$('#change').text('Funky Doodle')")
 
 # Evaluate the given JavaScript and return the result. Be careful when using this with
 # scripts that return complex objects, such as jQuery statements. +execute_script+ might
 # be a better alternative.
-#
 page.evaluate_script("1+3")
 # => 4
 
@@ -142,51 +140,51 @@ expect(page).to have_xpath("//a[@href => 'google.com']")
 expect(page).to have_xpath("//a[contains(.,'some string')]")
 expect(page).to have_xpath("//p//a", :text => /re[dab]i/i, :count => 1)
 
- # can take both xpath and css as input and can take arguments similar to both have_css and have_xpath
- expect(page).to have_selector(:xpath, "//p/h1")
- expect(page).to have_selector(:css, "p a#post_edit_path")
+# Can take both xpath and css as input and can take arguments similar to both have_css and have_xpath
+expect(page).to have_selector(:xpath, "//p/h1")
+expect(page).to have_selector(:css, "p a#post_edit_path")
 
- expect(page).to have_css("input#post_title")
- expect(page).to have_css("input#post_title", :value => "Capybara cheatsheet")
+expect(page).to have_css("input#post_title")
+expect(page).to have_css("input#post_title", :value => "Capybara cheatsheet")
 
- # True if there are 3 input tags in response
- expect(page).to have_css("input", :count => 3)
+# True if there are 3 input tags in response
+expect(page).to have_css("input", :count => 3)
 
- # True if there or fewer or equal to 3 input tags
- expect(page).to have_css("input", :maximum => 3)
+# True if there or fewer or equal to 3 input tags
+expect(page).to have_css("input", :maximum => 3)
 
- # True if there are minimum of 3 input tags
- expect(page).to have_css("input", :minimum => 3)
+# True if there are minimum of 3 input tags
+expect(page).to have_css("input", :minimum => 3)
 
- # True if there 1 to 3 input tags
- expect(page).to have_css("input", :between => 1..3)
+# True if there 1 to 3 input tags
+expect(page).to have_css("input", :between => 1..3)
 
- # True if there is a anchor tag with text hello
- expect(page).to have_css("p a", :text => "hello")
- expect(page).to have_css("p a", :text => /[hH]ello(.+)/i)
+# True if there is a anchor tag with text hello
+expect(page).to have_css("p a", :text => "hello")
+expect(page).to have_css("p a", :text => /[hH]ello(.+)/i)
 
 # For making capybara to take css as default selector
 Capybara.default_selector = :css
 
-# checks for the presence of the input tag
+# Checks for the presence of the input tag
 expect(page).to have_selector("input")
 
-# checks for input tag with value
+# Checks for input tag with value
 expect(page).to have_selector("input", :value =>"Post Title")
 
 expect(page).to have_no_selector("input")
 
 # For making capybara to take css as default selector
 Capybara.default_selector = :xpath
-# checks for the presence of the input tag
+
+# Checks for the presence of the input tag
 expect(page).to have_selector("//input")
 
-# checks for input tag with value
+# Checks for input tag with value
 expect(page).to have_selector("//input", :value =>"Post Title")
 
-# checks for presence of a input field named FirstName in a form
+# Checks for presence of a input field named FirstName in a form
 expect(page).to have_field("FirstName")
-
 expect(page).to have_field("FirstName", :value => "Rambo")
 expect(page).to have_field("FirstName", :with => "Rambo")
 
@@ -198,69 +196,55 @@ expect(page).to have_no_link("Foo", :href=>"google.com")
 ## Capybara setup
 
 ```ruby
+Capybara.configure do |config|
+  # The default host to use when giving a relative URL to visit
+  config.app_host = 'http://www.google.com'
 
-    Capybara.configure do |config|
-      # The default host to use when giving a relative URL to visit
-      #
-      config.app_host = 'http://www.google.com'
+  # Where dynamic assets are hosted - will be prepended to relative asset locations if present (Default: nil)
+  config.asset_host = nil
 
-      # Where dynamic assets are hosted - will be prepended to relative asset locations if present (Default: nil)
-      #
-      config.asset_host = nil
+  # Whether the Rack server's port should automatically be inserted into every visited URL
+  config.always_include_port = false
 
-      # Whether the Rack server's port should automatically be inserted into every visited URL
-      #
-      config.always_include_port = false
+  # Whether to start a Rack server for the given Rack app (Default: true)
+  config.run_server = true
 
-      # Whether to start a Rack server for the given Rack app (Default: true)
-      #
-      config.run_server = true
+  # Methods which take a selector use the given type by default. (Can be :css or :xpath, DEFAULT CSS).
+  config.default_selector = :css
 
-      # Methods which take a selector use the given type by default. (Can be :css or :xpath, DEFAULT CSS).
-      config.default_selector = :css
+  # The number of seconds to wait for asynchronous processes to finish (Default: 2)
+  config.default_wait_time = 2
 
-      # The number of seconds to wait for asynchronous processes to finish (Default: 2)
-      #
-      config.default_wait_time = 2
+  # Whether to ignore hidden elements on the page (Default: true)
+  config.ignore_hidden_elements = true
 
-      # Whether to ignore hidden elements on the page (Default: true)
-      #
-      config.ignore_hidden_elements = true
+  config.default_host = 'http://www.example.com'
 
-      config.default_host = "http://www.example.com"
+  # Whether to automatically reload elements as Capybara is waiting (Default: true)
+  config.automatic_reload = true
 
-      # Whether to automatically reload elements as Capybara is waiting (Default: true)
-      #
-      config.automatic_reload = true
+  # Can be :first, :smart, :prefer_exact or :one.
+  config.match = :smart
 
-      # Can be :first, :smart, :prefer_exact or :one.
-      config.match = :smart
+  # Can specify whether to match substrings or entire text. (Default: false)
+  config.exact = false
 
-      # Can specify whether to match substrings or entire text. (Default: false)
-      config.exact = false
+  # Ignores server errors if false.
+  config.raise_server_errors = false
 
-      # Ignores server errors if false.
-      #
-      config.raise_server_errors = false
+  # Will ignores invisible text
+  # But you can search invisible texts with :all option: 'page.find(:id, "hidden-text").text(:all)'
+  Capybara.visible_text_only = true
 
-      # Will ignores invisible text
-      #
-      # But you can search invisible texts with :all option: 'page.find(:id, "hidden-text").text(:all)'
-      #
-      Capybara.visible_text_only = true
+  # Where to put pages saved through save_and_open_page (Default: Dir.pwd)
+  config.save_and_open_page_path = Dir.pwd
 
-      # Where to put pages saved through save_and_open_page (Default: Dir.pwd)
-      #
-      config.save_and_open_page_path = Dir.pwd
+  # The name of the driver to use by default. (Default: :rack_test)
+  config.default_driver = :rack_test
 
-      # The name of the driver to use by default. (Default: :rack_test)
-      #
-      config.default_driver = :rack_test
-
-      # The name of a driver to use for JavaScript enabled tests. (Default: :selenium)
-      #
-      config.javascript_driver = :selenium
-    end
+  # The name of a driver to use for JavaScript enabled tests. (Default: :selenium)
+  config.javascript_driver = :selenium
+end
 ```
 
 ## Register drivers
@@ -268,27 +252,25 @@ expect(page).to have_no_link("Foo", :href=>"google.com")
 You can register drivers to test against other browsers:
 
 ```ruby
+Capybara.register_driver :selenium_chrome do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+end
 
-    Capybara.register_driver :selenium_chrome do |app|
-      Capybara::Selenium::Driver.new(app, :browser => :chrome)
-    end
+Capybara.register_driver :selenium_firefox do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :firefox)
+end
 
-    Capybara.register_driver :selenium_firefox do |app|
-      Capybara::Selenium::Driver.new(app, :browser => :firefox)
-    end
-
-    Capybara.register_driver :selenium_safari do |app|
-      Capybara::Selenium::Driver.new(app, :browser => :safari)
-    end
+Capybara.register_driver :selenium_safari do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :safari)
+end
 ```
 
 They you can use configuring the default_driver:
 
 ```ruby
-
-    Capybara.configure do |config|
-      config.default_driver = :selenium_safari
-    end
+Capybara.configure do |config|
+  config.default_driver = :selenium_safari
+end
 ```
 
 ## Collaborators
