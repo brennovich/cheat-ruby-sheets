@@ -65,7 +65,7 @@ factory :user do
   date_of_birth   { 21.years.ago }
   some_attr       { some_method }
 end
-```ruby
+```
 
 ## Dependent attributes
 
