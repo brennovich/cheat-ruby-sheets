@@ -77,8 +77,9 @@ cnpj.valid?
 ```
 
 ## Command Line
-```ruby
+
 Check if CPF is valid
+```ruby
 cpf --check 532.820.857-96
 ```
 
