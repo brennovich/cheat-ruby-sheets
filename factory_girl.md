@@ -53,4 +53,81 @@ user.first_name
 # => "Joe"
 ```
 
+## Lazy Attributes
+
+Some attributes may need values assigned each time an instance is created.
+
+```ruby
+# Lazy attributes can be added by passing a block instead of a parameter
+factory :user do
+  # ...
+  activation_code { User.generate_activation_code }
+  date_of_birth   { 21.years.ago }
+  some_attr       { some_method }
+end
+```ruby
+
+## Dependent attributes
+
+Attributes can be based on the values of other attributes.
+
+```ruby
+factory :user do
+  first_name "Joe"
+  last_name  "Blow"
+  email { "#{first_name}.#{last_name}@example.com".downcase }
+end
+```
+
+## Associations
+
+```ruby
+# If the factory name is the same as the association name, it's simple
+factory :post do
+  author
+end
+
+# You can also specify a different factory or override attributes
+factory :post do
+  # ...
+  association :author, factory: :user, last_name: "Writely"
+end
+
+# Builds and saves a User and a Post
+post = FactoryGirl.create(:post)
+post.new_record?        # => false
+post.author.new_record? # => false
+
+# Builds and saves a User, and then builds but does not save a Post
+post = FactoryGirl.build(:post)
+post.new_record?        # => true
+post.author.new_record? # => false
+```
+
 ## Aliases
+
+Aliases allow to use named associations more easily.
+
+```ruby
+factory :user, aliases: [:author, :commenter] do
+  first_name    "John"
+  last_name     "Doe"
+  date_of_birth { 18.years.ago }
+end
+
+factory :post do
+  author
+  # instead of
+  # association :author, factory: :user
+  title "How to read a book effectively"
+  body  "There are five steps involved."
+end
+
+factory :comment do
+  commenter
+  # instead of
+  # association :commenter, factory: :user
+  body "Great article!"
+end
+
+```
