@@ -1,6 +1,6 @@
 ## Awesome Nested Set
 
-## Setup
+### Setup
 
 To make use of `awesome_nested_set`, your model needs to have 3 fields:
 `lft`, `rgt`, and `parent_id`. The names of these fields are configurable:
@@ -30,7 +30,7 @@ class Category < ActiveRecord::Base
 end
 ```
 
-## Basic Usage
+### Basic Usage
 
 Create a root node:
 
@@ -66,7 +66,7 @@ Science
     '-- Classical Mechanics
 ```
 
-## Callbacks
+### Callbacks
 
 Handful `ActiveRecord` callbacks, when moving a node:
 
@@ -76,7 +76,7 @@ after_move
 around_move
 ```
 
-## Hooks
+### Hooks
 
 You can pass hooks to the `acts_as_nested_set` macro:
 
@@ -87,7 +87,7 @@ acts_as_nested_set before_add: :do_before_add_stuff,
                    after_remove: :do_after_remove_stuff
 ```
 
-## Methods
+### Methods
 
 There are cool methods to help you walk through your nested set. Grabbing `roots`:
 
