@@ -1,4 +1,6 @@
-## Defining factories
+## FactoryGirl
+
+### Defining factories
 
 ```ruby
 FactoryGirl.define do
@@ -22,7 +24,7 @@ FactoryGirl.define do
 end
 ```
 
-## Building factories
+### Building factories
 
 ```ruby
 # Returns an User instace that's not saved
@@ -53,7 +55,7 @@ user.first_name
 # => "Joe"
 ```
 
-## Lazy Attributes
+### Lazy Attributes
 
 Some attributes may need values assigned each time an instance is created.
 
@@ -67,7 +69,7 @@ factory :user do
 end
 ```
 
-## Dependent attributes
+### Dependent attributes
 
 Attributes can be based on the values of other attributes.
 
@@ -79,7 +81,7 @@ factory :user do
 end
 ```
 
-## Associations
+### Associations
 
 ```ruby
 # If the factory name is the same as the association name, it's simple
@@ -104,7 +106,7 @@ post.new_record?        # => true
 post.author.new_record? # => false
 ```
 
-## Aliases
+### Aliases
 
 Aliases allow to use named associations more easily.
 
@@ -116,17 +118,15 @@ factory :user, aliases: [:author, :commenter] do
 end
 
 factory :post do
+  # instead of association :author, factory: :user
   author
-  # instead of
-  # association :author, factory: :user
   title "How to read a book effectively"
   body  "There are five steps involved."
 end
 
 factory :comment do
+  # instead of association :commenter, factory: :user
   commenter
-  # instead of
-  # association :commenter, factory: :user
   body "Great article!"
 end
 
