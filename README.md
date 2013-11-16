@@ -6,7 +6,7 @@ One cheat sheet repo to rule them all.
 
 1. Fork
 2. Create a feature-branch with the name of the thing that you are cheating
-3. Follow the style convenctions below
+3. Follow the style conventions below
 4. Pull Request
 
 ### Naming pattern
