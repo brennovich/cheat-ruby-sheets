@@ -234,7 +234,7 @@ Capybara.configure do |config|
 
   # Will ignores invisible text
   # But you can search invisible texts with :all option: 'page.find(:id, "hidden-text").text(:all)'
-  Capybara.visible_text_only = true
+  config.visible_text_only = true
 
   # Where to put pages saved through save_and_open_page (Default: Dir.pwd)
   config.save_and_open_page_path = Dir.pwd
