@@ -131,3 +131,38 @@ factory :comment do
 end
 
 ```
+
+### Trait
+
+Trait helps you to remove duplication
+
+```ruby
+FactoryGirl.define do
+  factory :post do
+    title 'An awesome post'
+    body 'Lorem Ipsum...'
+
+    trait :published do
+      status :published
+    end
+
+    trait :unpublished do
+      status :draft
+    end
+    
+    trait :with_comments do
+      after(:create) do |post|
+        create_list :comment, 2, todo_item: post
+      end
+    end
+  end
+end
+
+# then in your test
+
+let(:post) { create(:post, :published) }
+
+# or even with
+
+let(:post) { create(:post, :published, :with_comments) }
+```
