@@ -1,7 +1,7 @@
-## Rake Tasks
+# Rake Tasks
 
-### Simple task
-#### Code
+## Simple task
+ *Code*
 ```ruby
 desck "Says to you a Hello World"
 task :hello_world do
@@ -9,13 +9,13 @@ task :hello_world do
 end
 
 ```
-##### Console call
+ *Console call*
 ```console
 rake hello_world
 ```
 
-### Task with arguments
-#### Code
+## Task with arguments
+ *Code*
 ```ruby
 desc "Create a default user as admin"
 task :create_user, [:email, :password] do |t, args|
@@ -24,12 +24,12 @@ task :create_user, [:email, :password] do |t, args|
 end
 ```
 
-#### Console call
+ *Console call*
 ```console
 rake create_user[example@example.com,mypassword]
 ```
 
-### Tasks with dependencies
+## Tasks with dependencies
 ```ruby
 task :environment do
   puts "loading environment!"
