@@ -3,7 +3,7 @@
 ## Simple task
  *Code*
 ```ruby
-desck "Says to you a Hello World"
+desc "Says to you a Hello World"
 task :hello_world do
   puts "Hello world"
 end
