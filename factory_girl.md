@@ -27,7 +27,7 @@ end
 ### Building factories
 
 ```ruby
-# Returns an User instace that's not saved
+# Returns an User instance that's not saved
 user = FactoryGirl.build(:user)
 
 # Returns a saved User instance
