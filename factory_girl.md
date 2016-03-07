@@ -33,7 +33,7 @@ user = FactoryGirl.build(:user)
 # Returns a saved User instance
 user = FactoryGirl.create(:user)
 
-# Returns a hash f attributes that can be used to build an User instance
+# Returns a hash of attributes that can be used to build an User instance
 attrs = FactoryGirl.attributes_for(:user)
 
 # Returns an object with all defined attributes stubbed out
