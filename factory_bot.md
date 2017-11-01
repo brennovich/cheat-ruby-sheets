@@ -1,9 +1,9 @@
-## FactoryGirl
+## FactoryBot
 
 ### Defining factories
 
 ```ruby
-FactoryGirl.define do
+FactoryBot.define do
 
   # Default 
   # It will use the User class
@@ -28,29 +28,29 @@ end
 
 ```ruby
 # Returns an User instance that's not saved
-user = FactoryGirl.build(:user)
+user = FactoryBot.build(:user)
 
 # Returns a saved User instance
-user = FactoryGirl.create(:user)
+user = FactoryBot.create(:user)
 
 # Returns a hash f attributes that can be used to build an User instance
-attrs = FactoryGirl.attributes_for(:user)
+attrs = FactoryBot.attributes_for(:user)
 
 # Returns an object with all defined attributes stubbed out
-stub = FactoryGirl.build_stubbed(:user)
+stub = FactoryBot.build_stubbed(:user)
 
 # Passing a block to any of the methods above will yield the return object
-FactoryGirl.create(:user) do |user|
+FactoryBot.create(:user) do |user|
   user.posts.create(attributes_for(:post))
 end
 
 # Overriding attributes of a factory
-user = FactoryGirl.build(:user, first_name: "Joe")
+user = FactoryBot.build(:user, first_name: "Joe")
 user.first_name
 # => "Joe"
 
 # No matter which build strategy is used to override attributes
-user = FactoryGirl.create(:user, first_name: "Joe")
+user = FactoryBot.create(:user, first_name: "Joe")
 user.first_name
 # => "Joe"
 ```
@@ -96,12 +96,12 @@ factory :post do
 end
 
 # Builds and saves a User and a Post
-post = FactoryGirl.create(:post)
+post = FactoryBot.create(:post)
 post.new_record?        # => false
 post.author.new_record? # => false
 
 # Builds and saves a User, and then builds but does not save a Post
-post = FactoryGirl.build(:post)
+post = FactoryBot.build(:post)
 post.new_record?        # => true
 post.author.new_record? # => false
 ```
@@ -137,7 +137,7 @@ end
 Trait helps you to remove duplication
 
 ```ruby
-FactoryGirl.define do
+FactoryBot.define do
   factory :post do
     title 'An awesome post'
     body 'Lorem Ipsum...'
