@@ -8,17 +8,17 @@ FactoryBot.define do
   # Default 
   # It will use the User class
   factory :user do
-    first_name "John"
-    last_name  "Doe"
-    admin false
+    first_name { "John" }
+    last_name { "Doe" }
+    admin { false }
   end
 
   # Specifying the class 
   # It will use the User class, instead of Admin class
   factory :admin, class: User do
-    first_name "Admin"
-    last_name  "User"
-    admin      true
+    first_name { "Admin" }
+    last_name { "User" }
+    admin { true }
   end
 
 end
@@ -55,28 +55,14 @@ user.first_name
 # => "Joe"
 ```
 
-### Lazy Attributes
-
-Some attributes may need values assigned each time an instance is created.
-
-```ruby
-# Lazy attributes can be added by passing a block instead of a parameter
-factory :user do
-  # ...
-  activation_code { User.generate_activation_code }
-  date_of_birth   { 21.years.ago }
-  some_attr       { some_method }
-end
-```
-
 ### Dependent attributes
 
 Attributes can be based on the values of other attributes.
 
 ```ruby
 factory :user do
-  first_name "Joe"
-  last_name  "Blow"
+  first_name { "Joe" }
+  last_name { "Blow" }
   email { "#{first_name}.#{last_name}@example.com".downcase }
 end
 ```
@@ -112,22 +98,22 @@ Aliases allow to use named associations more easily.
 
 ```ruby
 factory :user, aliases: [:author, :commenter] do
-  first_name    "John"
-  last_name     "Doe"
+  first_name { "John" }
+  last_name { "Doe" }
   date_of_birth { 18.years.ago }
 end
 
 factory :post do
   # instead of association :author, factory: :user
   author
-  title "How to read a book effectively"
-  body  "There are five steps involved."
+  title { "How to read a book effectively" }
+  body { "There are five steps involved." }
 end
 
 factory :comment do
   # instead of association :commenter, factory: :user
   commenter
-  body "Great article!"
+  body { "Great article!" }
 end
 
 ```
@@ -139,15 +125,15 @@ Trait helps you to remove duplication
 ```ruby
 FactoryBot.define do
   factory :post do
-    title 'An awesome post'
-    body 'Lorem Ipsum...'
+    title { 'An awesome post' }
+    body { 'Lorem Ipsum...' }
 
     trait :published do
-      status :published
+      status { :published }
     end
 
     trait :unpublished do
-      status :draft
+      status { :draft }
     end
     
     trait :with_comments do
